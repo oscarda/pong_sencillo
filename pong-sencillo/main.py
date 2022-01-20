@@ -12,7 +12,7 @@ screen_width=800
 screen_height=600
 screen=pygame.display.set_mode((screen_width, screen_height))
 
-pista = pygame.image.load("images/pista_tenis_800x600.png")
+
 
 # Color
 black=(0, 0, 0)
@@ -33,14 +33,8 @@ def BackgroundGameplay():
     screen.fill(black)
     pygame.draw.line(screen, white, ((screen_width / 2), 0), ((screen_width / 2), screen_height), 2)
     pygame.draw.rect(screen, blue, ((0, 0), (screen_width, screen_height)), lineWidth)
-    screen.blit(pista, (0,0) )
 
 def Paddle(paddle):
-    if paddle.bottom > screen_height - lineWidth:
-        paddle.bottom = screen_height - lineWidth
-    elif paddle.top < lineWidth:
-        paddle.top = lineWidth
-
     pygame.draw.rect(screen, white, paddle)
 
 def Ball(ball):
@@ -64,7 +58,7 @@ def main():
     ballDirX = -1
     ballDirY = -1
 
-    paddle1=pygame.Rect(paddleOffset, playerPos, lineWidth, paddleSize)
+    paddle1 = pygame.Rect(paddleOffset, playerPos, lineWidth, paddleSize)
     paddle2 = pygame.Rect(screen_width - paddleOffset - lineWidth, enemyPos, lineWidth, paddleSize)
     ball=pygame.Rect(ballPosX, ballPosY, lineWidth, lineWidth)
 
@@ -82,7 +76,7 @@ def main():
             elif event.type==MOUSEMOTION:
                 mousex, mousey=event.pos
                 print("Ratón: (x,y)=(", mousex, ", ", mousey)                
-                paddle1.y=mousey
+                
 
         BackgroundGameplay()
         Paddle(paddle1)
@@ -96,7 +90,4 @@ def main():
         clock.tick(fps)
 
 
-
-
-if __name__=='__main__':
-    main()
+main()
